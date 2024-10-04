@@ -5,8 +5,17 @@ Se tutto è ok stampare "Accesso riuscito", altrimenti "Accesso negato" -->
 
 <?php
 
-?>
+$user_name = $_GET["name"];
+$user_email = $_GET["email"];
+$user_age = $_GET["age"];
 
+if ((strlen($user_name) > 3) && is_numeric($user_age)) {
+    var_dump("accesso riuscito");
+} else {
+    var_dump("accesso non riuscito");
+};
+
+?>
 
 <!DOCTYPE html>
 <html lang="it">
@@ -43,6 +52,7 @@ Se tutto è ok stampare "Accesso riuscito", altrimenti "Accesso negato" -->
                             <div class="col">
                                 <input type="text" name="age" class="form-control" placeholder="age" aria-label="age">
                             </div>
+                            <button type="submit" class="btn btn-primary">Invia</button>
                     </form>
                 </div>
             </div>
