@@ -240,6 +240,14 @@ $classi = [
 // new array for the classes filtered
 $filtered_classes = [];
 
+// every student with vote > 6
+foreach ($classi as $key => $single_class) {
+    foreach ($single_class as $student) {
+        if ($student['voto_medio'] > 6) {
+            $filtered_classes[$key][] = $student;
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -266,44 +274,44 @@ $filtered_classes = [];
                     <h1 class="fw-bolder text-center">snack-4</h1>
                     <!-- list of school's classes -->
                     <ul id="classes-list" class="list-unstyled">
-                        <?php foreach ($classi as $key => $single_class) { ?>
-                            <li>
-                                <!-- number of the single class -->
-                                <h2><?php echo $key ?></h2>
-                                <!-- list of the students of the single class -->
-                                <ul id="single-class" class="list-unstyled mb-5 row">
-                                    <?php foreach ($single_class as $student) { ?>
-                                        <!-- single student -->
-                                        <li id="single_student" class="mb-2 col-3">
-                                            <!-- single stuedent card -->
-                                            <div class="card w-100" style="width: 18rem;">
-                                                <div class="card-header">
-                                                    <p>id: <span><?php echo $student['id']; ?></span> </p>
-                                                    <p>Nome: <span><?php echo $student['nome']; ?></span> </p>
-                                                    <p>Cognome <span><?php echo $student['cognome']; ?></span> </p>
-                                                </div>
-                                                <ul class="list-group list-group-flush">
-                                                    <li class="list-group-item">
-                                                        <p>Anni: <span><?php echo $student['anni']; ?></span> </p>
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <p>Voto medio: <span><?php echo $student['voto_medio']; ?></span> </p>
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <p>LInguaggio preferito:
-                                                            <span><?php echo $student['linguaggio_preferito']; ?></span>
-                                                        </p>
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <img class="img-fluid" src="<?php echo $student['immagine']; ?>"
-                                                            alt="<?php echo $student['immagine']; ?>">
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    <?php } ?>
-                                </ul>
-                            </li>
+                        <?php foreach ($filtered_classes as $key => $single_class) { ?>
+                        <li>
+                            <!-- number of the single class -->
+                            <h2><?php echo $key ?></h2>
+                            <!-- list of the students of the single class -->
+                            <ul id="single-class" class="list-unstyled mb-5 row">
+                                <?php foreach ($single_class as $student) { ?>
+                                <!-- single student -->
+                                <li id="single_student" class="mb-2 col-3">
+                                    <!-- single stuedent card -->
+                                    <div class="card w-100" style="width: 18rem;">
+                                        <div class="card-header">
+                                            <p>id: <span><?php echo $student['id']; ?></span> </p>
+                                            <p>Nome: <span><?php echo $student['nome']; ?></span> </p>
+                                            <p>Cognome <span><?php echo $student['cognome']; ?></span> </p>
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">
+                                                <p>Anni: <span><?php echo $student['anni']; ?></span> </p>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <p>Voto medio: <span><?php echo $student['voto_medio']; ?></span> </p>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <p>LInguaggio preferito:
+                                                    <span><?php echo $student['linguaggio_preferito']; ?></span>
+                                                </p>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <img class="img-fluid" src="<?php echo $student['immagine']; ?>"
+                                                    alt="<?php echo $student['immagine']; ?>">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <?php } ?>
+                            </ul>
+                        </li>
                         <?php } ?>
                     </ul>
                 </div>
