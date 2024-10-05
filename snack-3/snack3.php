@@ -2,32 +2,31 @@
 Stampiamo il nostro array mettendo gli insegnanti in un rettangolo grigio e i PM in un rettangolo verde. -->
 
 <?php
- 
-    $db = [
-        'teachers' => [
-            [
-                'name' => 'Michele',
-                'lastname' => 'Papagni'
-            ],
-            [
-                'name' => 'Fabio',
-                'lastname' => 'Forghieri'
-            ]
-        ],
-        'pm' => [
-            [
-                'name' => 'Roberto',
-                'lastname' => 'Marazzini'
-            ],
-            [
-                'name' => 'Federico',
-                'lastname' => 'Pellegrini'
-            ]
-        ]
-    ];
- 
-?>
 
+$db = [
+    'teachers' => [
+        [
+            'name' => 'Michele',
+            'lastname' => 'Papagni'
+        ],
+        [
+            'name' => 'Fabio',
+            'lastname' => 'Forghieri'
+        ]
+    ],
+    'pm' => [
+        [
+            'name' => 'Roberto',
+            'lastname' => 'Marazzini'
+        ],
+        [
+            'name' => 'Federico',
+            'lastname' => 'Pellegrini'
+        ]
+    ]
+];
+
+?>
 
 <!DOCTYPE html>
 <html lang="it">
@@ -52,20 +51,20 @@ Stampiamo il nostro array mettendo gli insegnanti in un rettangolo grigio e i PM
                 <div class="col-12">
                     <h1>snack 3</h1>
                     <ul>
-                        <?php foreach($db as $item){?>
-                        <li>
-                            <h2><?php echo $item?></h2>
-                            <ul>
-                                <?php foreach($item as $singleItem){?>
-                                <li>
-                                    <p><?php echo $singleItem['name']?></p>
-                                    <p><?php echo $singleItem['lastname']?></p>
+                        <?php foreach ($db as $key => $item) { ?>
+                            <li>
+                                <h2><?php echo $key ?></h2>
+                                <ul>
+                                    <?php foreach ($item as $singleItem) { ?>
+                                        <li>
+                                            <p><?php echo $singleItem['name'] ?></p>
+                                            <p><?php echo $singleItem['lastname'] ?></p>
 
-                                </li>
-                                <?php }?>
-                            </ul>
-                        </li>
-                        <?php }?>
+                                        </li>
+                                    <?php } ?>
+                                </ul>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </div>
             </div>
