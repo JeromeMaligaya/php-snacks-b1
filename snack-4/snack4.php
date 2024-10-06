@@ -251,7 +251,9 @@ $filtered_classes = [];
 
 // collected data from from
 $user_vote = $_GET['user-vote'];
+$user_language = $_GET['user-language'];
 
+// filtering through user_vote
 if (isset($user_vote) && is_numeric($user_vote)) {
     foreach ($classi as $key => $single_class) {
         foreach ($single_class as $student) {
@@ -261,9 +263,21 @@ if (isset($user_vote) && is_numeric($user_vote)) {
         }
     }
 } else {
-    var_dump('inserisci un valore numerico!');
+    var_dump('type a numeric value!');
 };
 
+// filtering through user_language
+if (isset($user_language) /*&& !($user_language == '')*/) {
+    foreach ($classi as $key => $single_class) {
+        foreach ($single_class as $student) {
+            if (strtolower($student['linguaggio_preferito']) === strtolower($user_language)) {
+                $filtered_classes[$key][] = $student;
+            }
+        }
+    }
+} else {
+    var_dump('type a valid language!');
+};
 
 ?>
 
@@ -292,6 +306,10 @@ if (isset($user_vote) && is_numeric($user_vote)) {
                         <div class="col-4 mb-3">
                             <label for="user-vote">vote:</label>
                             <input type="text" name="user-vote" id="user-vote" placeholder="type a max vote...">
+                        </div>
+                        <div class="col-4 mb-3">
+                            <label for="user-language">vote:</label>
+                            <input type="text" name="user-language" id="user-language" placeholder="type a language...">
                         </div>
                         <div class="col-12">
                             <button type="submit" class="btn btn-sm btn-primary">Send</button>
