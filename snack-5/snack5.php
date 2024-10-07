@@ -1,7 +1,14 @@
 <?php
 $user_word = $_GET['user-word'];
 
-function isPalindroma($user_word) {}
+function isPalindroma($user_word)
+{
+    if (trim($user_word) === trim(strrev($user_word))) {
+        var_dump("E' PALINDROMA");
+    } else {
+        var_dump("NON E' PALINDROMA");
+    }
+}
 
 ?>
 
@@ -26,7 +33,7 @@ function isPalindroma($user_word) {}
         <div class="container mt-4">
             <div class="row">
                 <div class="col-12">
-                    <form action="snack4.php" method="GET" class="col-12 row">
+                    <form action="snack5.php" method="GET" class="col-12 row">
                         <div class="col-4 mb-3">
                             <label for="user-word">vote:</label>
                             <input type="text" name="user-word" id="user-word" placeholder="type a word...">
